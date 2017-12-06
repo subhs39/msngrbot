@@ -37,6 +37,7 @@ def verify():
     g.db_conn.commit()
     cur.execute("select * from subscribers;")
     subs=cur.fetchall()
+    g.db_conn.close()
 
     return render_template('main.html',subs=subs)
     # return "OK", 200
