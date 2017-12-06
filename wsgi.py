@@ -32,6 +32,9 @@ def verify():
 
 
     cur= g.db_conn.cursor()
+
+    cur.execute("insert into subscribers (Name,phone_number) values ('mahatosumit0@',9339060112)");
+
     cur.execute("select * from subscribers;")
     subs=cur.fetchall()
 
