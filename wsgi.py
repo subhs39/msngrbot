@@ -35,7 +35,7 @@ def verify():
     cur.execute("select * from subscribers;")
     subs=cur.fetchall()
 
-    return subs
+    return render_template('main.html',subs=subs)
     # return "OK", 200
 
 
