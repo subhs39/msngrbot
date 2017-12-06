@@ -33,7 +33,7 @@ def verify():
 
     cur= g.db_conn.cursor()
 
-    cur.execute("insert into subscribers (Name) values (%s);",('subz'))
+    # cur.execute("insert into subscribers (Name) values (%s);",('subz'))
 
     cur.execute("select * from subscribers;")
     subs=cur.fetchall()
