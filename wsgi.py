@@ -1,10 +1,18 @@
-from flask import Flask, request
+from flask import Flask, request, render_template, g
 import os, sys
+import psycopg2
 
 PAGE_ACCESS_TOKEN = 'EAAGeqbKAeBsBANoM8kD01gIRR4XzfZBhxCbuqcpZC8AHo6OXUSz3vPOMIXN4Pw2UBS31KRdIvMKBRSmjFKQTLeSHvjWfaFZCZARXteuEQKZCIRXoZCWBysb2qzbg0DAa7fIdXWG4yZBcz0WMpZAedfShv2545GiGa9PsI7JSXe6RuaiCVVNrFy3v'
 VERIFY_TOKEN = 'messi'
 
 app = Flask(__name__)
+
+def connect_db():
+    return psycopg2.connect(os.environ.get('DATABASE_URL'))
+
+@app.before_request
+def before_request():
+    g.db_conn = connect_db()
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -21,7 +29,14 @@ def verify():
     	if not request.args.get('hub.verify_token') == "messi":
     		return "Verification token mismatch",403
     	return request.args["hub.challenge"], 200
-    return "OK", 200
+
+
+    cur= g.db_conn.cursor()
+    cur.execute("select * from subscribers;")
+    subs=cur.fetchall()
+
+    return subs
+    # return "OK", 200
 
 
 @app.route('/', methods=['POST'])
