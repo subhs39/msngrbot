@@ -6,6 +6,8 @@ from pymessenger import Bot
 PAGE_ACCESS_TOKEN = 'EAAGeqbKAeBsBANoM8kD01gIRR4XzfZBhxCbuqcpZC8AHo6OXUSz3vPOMIXN4Pw2UBS31KRdIvMKBRSmjFKQTLeSHvjWfaFZCZARXteuEQKZCIRXoZCWBysb2qzbg0DAa7fIdXWG4yZBcz0WMpZAedfShv2545GiGa9PsI7JSXe6RuaiCVVNrFy3v'
 VERIFY_TOKEN = 'messi'
 
+bot= Bot(PAGE_ACCESS_TOKEN)
+
 app = Flask(__name__)
 
 # def connect_db():
