@@ -7,12 +7,12 @@ VERIFY_TOKEN = 'messi'
 
 app = Flask(__name__)
 
-def connect_db():
-    return psycopg2.connect(os.environ.get('DATABASE_URL'))
+# def connect_db():
+#     return psycopg2.connect(os.environ.get('DATABASE_URL'))
 
-@app.before_request
-def before_request():
-    g.db_conn = connect_db()
+# @app.before_request
+# def before_request():
+#     g.db_conn = connect_db()
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -31,16 +31,16 @@ def verify():
     	return request.args["hub.challenge"], 200
 
 
-    cur= g.db_conn.cursor()
+    # cur= g.db_conn.cursor()
 
-    cur.execute("insert into subscribers (Name,phone_number) values (%s,%s);",('subz',9883224158))
-    g.db_conn.commit()
-    cur.execute("select * from subscribers;")
-    subs=cur.fetchall()
-    g.db_conn.close()
+    # cur.execute("insert into subscribers (Name,phone_number) values (%s,%s);",('subz',9883224158))
+    # g.db_conn.commit()
+    # cur.execute("select * from subscribers;")
+    # subs=cur.fetchall()
+    # g.db_conn.close()
 
-    return render_template('main.html',subs=subs)
-    # return "OK", 200
+    # return render_template('main.html',subs=subs)
+    return "OK", 200
 
 
 @app.route('/', methods=['POST'])
