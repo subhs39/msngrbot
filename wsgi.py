@@ -40,7 +40,7 @@ def verify():
     # g.db_conn.close()
 
     # return render_template('main.html',subs=subs)
-    return "OK", 200
+    return "ok", 200
 
 
 @app.route('/', methods=['POST'])
@@ -74,8 +74,7 @@ def get_msg(data):
                 if messaging_event.get('message'):
                     if 'text' in messaging_event['message']:
                         message=messaging_event['message']['text']
-                            return (sender_id,message)
-    return
+    return (sender_id,message=None)
 
 if __name__=="__main__":
 	app.run()
