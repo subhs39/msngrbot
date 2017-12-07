@@ -74,7 +74,8 @@ def get_msg(data):
                 if messaging_event.get('message'):
                     if 'text' in messaging_event['message']:
                         message=messaging_event['message']['text']
-    return (sender_id,message)
+                            return (sender_id,message)
+    return
 
 if __name__=="__main__":
 	app.run()

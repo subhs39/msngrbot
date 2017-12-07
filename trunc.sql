@@ -1,1 +1,1 @@
-truncate table subscribers;
+TRUNCATE TABLE subscribers RESTART IDENTITY;
