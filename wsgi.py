@@ -51,12 +51,30 @@ def handle_message():
     data = request.get_json()
 
     log(data)
-    return "OK"
+
+    sender_id,message = get_msg(data)
+
+    print(sender_id)
+    print(message)
+
+
+
+    return "ok"
 
 def log(message):
 	print(message)
 	sys.stdout.flush()
 
+def get_msg(data):
+    if data['object'] == 'page':
+        for entry in data['entry']:
+            for messaging_event in entry['messaging']:
+                sender_id=messaging_event['sender']['id']
+
+                if messaging_event.get('message'):
+                    if 'text' in messaging_event['message']:
+                        message=messaging_event['message']['text']
+    return (sender_id,message)
 
 if __name__=="__main__":
 	app.run()

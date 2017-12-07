@@ -1,0 +1,65 @@
+{
+  "id": "20a8abc1-5b35-4ebc-b7da-7db801f76ee0",
+  "timestamp": "2017-12-07T06:09:42.79Z",
+  "lang": "en",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "quotes from lionel lmessi",
+    "action": "",
+    "actionIncomplete": false,
+    "parameters": {
+      "any": "lionel lmessi"
+    },
+    "contexts": [],
+    "metadata": {
+      "intentId": "2bde69dd-8bfc-4dd0-8754-d847fd6ee334",
+      "webhookUsed": "false",
+      "webhookForSlotFillingUsed": "false",
+      "intentName": "words-person"
+    },
+    "fulfillment": {
+      "speech": "here's one from lionel lmessi",
+      "messages": [
+        {
+          "type": 0,
+          "speech": "here's one from lionel lmessi"
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success",
+    "webhookTimedOut": false
+  },
+  "sessionId": "1ee773cd-2497-4f21-8a4b-e3d34cd6bcdb"
+}
+
+
+curl -X GET "https://graph.facebook.com/v2.6/1595292400526758?fields=first_name,last_name,profile_pic&access_token=EAAGeqbKAeBsBANoM8kD01gIRR4XzfZBhxCbuqcpZC8AHo6OXUSz3vPOMIXN4Pw2UBS31KRdIvMKBRSmjFKQTLeSHvjWfaFZCZARXteuEQKZCIRXoZCWBysb2qzbg0DAa7fIdXWG4yZBcz0WMpZAedfShv2545GiGa9PsI7JSXe6RuaiCVVNrFy3v"
+
+
+{"first_name":"Akash","last_name":"Saini","profile_pic":"https:\/\/scontent.xx.fbcdn.net\/v\/t1.0-1\/15697991_754165438093379_5974933389619684592_n.jpg?oh=3b0dfb4a23a1880b1b587adeaa3cae2a&oe=5AC817A8","id":"1595292400526758"}
+
+
+import requests
+r = requests.get('http://example.com/')
+print r.text
+
+
+
+{'entry': [{'id': '155230338542165',
+            'messaging': [{'message': {'mid': 'mid.$cAADX2ltwNCdmYOwlNFgL6bXkzGSj',
+                                       'seq': 17586,
+                                       'text': 'Baad me'},
+                           'recipient': {'id': '155230338542165'},
+                           'sender': {'id': '1595292400526758'},
+                           'timestamp': 1512627952948}],
+            'time': 1512627953023}],
+ 'object': 'page'}
+
+
+
+
+
