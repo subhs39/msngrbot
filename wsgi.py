@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, g
 import os, sys
 import psycopg2
+from pymessenger import Bot
 
 PAGE_ACCESS_TOKEN = 'EAAGeqbKAeBsBANoM8kD01gIRR4XzfZBhxCbuqcpZC8AHo6OXUSz3vPOMIXN4Pw2UBS31KRdIvMKBRSmjFKQTLeSHvjWfaFZCZARXteuEQKZCIRXoZCWBysb2qzbg0DAa7fIdXWG4yZBcz0WMpZAedfShv2545GiGa9PsI7JSXe6RuaiCVVNrFy3v'
 VERIFY_TOKEN = 'messi'
@@ -49,32 +50,32 @@ def handle_message():
     Handle messages sent by facebook messenger to the applicaiton
     '''
     data = request.get_json()
-
     log(data)
 
-    sender_id,message = get_msg(data)
+    if data['object'] == 'page':
+        for entry in data['entry']:
+            for messaging_event in entry['messaging']:
 
-    print(sender_id)
-    print(message)
+                # IDs
+                sender_id = messaging_event['sender']['id']
+                recipient_id = messaging_event['recipient']['id']
 
+                if messaging_event.get('message'):
+                    # Extracting text message
+                    if 'text' in messaging_event['message']:
+                        messaging_text = messaging_event['message']['text']
+                    else:
+                        messaging_text = 'no text'
 
+                    # Echo
+                    response = messaging_text
+                    bot.send_text_message(sender_id, response)
 
-    return "ok"
+    return "ok", 200
 
 def log(message):
 	print(message)
 	sys.stdout.flush()
-
-def get_msg(data):
-    if data['object'] == 'page':
-        for entry in data['entry']:
-            for messaging_event in entry['messaging']:
-                sender_id=messaging_event['sender']['id']
-
-                if messaging_event.get('message'):
-                    if 'text' in messaging_event['message']:
-                        message=messaging_event['message']['text']
-    return (sender_id,message=None)
 
 if __name__=="__main__":
 	app.run()
