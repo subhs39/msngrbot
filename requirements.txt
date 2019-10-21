@@ -18,5 +18,5 @@ six==1.11.0
 slacker==0.9.60
 Unidecode==0.4.21
 urllib3==1.22
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 wikiquotes==1.4
